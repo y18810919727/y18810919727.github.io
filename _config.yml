@@ -1,6 +1,8 @@
 title: Yuan's Blog 
+SEOTitle: yuanyuanyuan
 description: An ACM salty fish and NLP beginner 
 show_downloads: false 
 google_analytics:
 theme: jekyll-theme-hacker
+url: "https://y18810919727.github.io"
 paginate: 5
