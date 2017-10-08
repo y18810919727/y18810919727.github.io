@@ -1,5 +1,6 @@
 ---
 layout: default
+title: my bloggg
 ---
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
@@ -121,3 +122,27 @@ Long, single-line code blocks should not wrap. They should horizontally scroll i
 ```
 The final element.
 ```
+=======
+title: my blogggggggggg
+---
+
+# ACM
+{% for post in site.posts %}
+{% if post.tag == 'acm' %}
+ [{{post.date | date_to_string}} {{post.title}}]({{post.url}})
+{% endif %}
+{%endfor%}
+# NLP 
+{% for post in site.posts  %}
+{% if post.tag == 'nlp' %}
+ [{{post.date | date_to_string}} {{post.title}}]({{post.url}})
+{% endif %}
+{%endfor%}
+# OTHERS 
+{% for post in site.posts  %}
+{% if post.tag == 'others' %}
+ [{{post.date | date_to_string}} {{post.title}}]({{post.url}})
+{% endif %}
+{%endfor%}
+
+>>>>>>> gh-pages
