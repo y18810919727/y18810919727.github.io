@@ -1,0 +1,2 @@
+source 'https://rubygems.org'
+gem "hacker", group: :jekyll_plugins
