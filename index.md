@@ -9,6 +9,14 @@ title: my blogggggggggg
  [{{post.date | date_to_string}} {{post.title}}]({{post.url}})
 {% endif %}
 {%endfor%}
+
+# Machine Learning 
+{% for post in site.posts %}
+{% if post.tag == 'ml' %}
+ [{{post.date | date_to_string}} {{post.title}}]({{post.url}})
+{% endif %}
+{%endfor%}
+
 # NLP 
 {% for post in site.posts  %}
 {% if post.tag == 'nlp' %}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>optimizer in machine learning | Yuan’s Blog</title>
+<meta property="og:title" content="optimizer in machine learning" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="随机梯度下降:Stochastic gradient descent shortened to SGD also known as incremental gradient descent, a stochastc approximation of the gradient descent for minimizing an objective function is the value of the loss function at -th example is the empirical risk" />
+<meta property="og:description" content="随机梯度下降:Stochastic gradient descent shortened to SGD also known as incremental gradient descent, a stochastc approximation of the gradient descent for minimizing an objective function is the value of the loss function at -th example is the empirical risk" />
+<link rel="canonical" href="http://localhost:4000/2018/04/28/optimizer.html" />
+<meta property="og:url" content="http://localhost:4000/2018/04/28/optimizer.html" />
+<meta property="og:site_name" content="Yuan’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-04-28T00:00:00+08:00" />
+<script type="application/ld+json">
+{"name":null,"description":"随机梯度下降:Stochastic gradient descent shortened to SGD also known as incremental gradient descent, a stochastc approximation of the gradient descent for minimizing an objective function is the value of the loss function at -th example is the empirical risk","author":null,"@type":"BlogPosting","url":"http://localhost:4000/2018/04/28/optimizer.html","publisher":null,"image":null,"headline":"optimizer in machine learning","dateModified":"2018-04-28T00:00:00+08:00","datePublished":"2018-04-28T00:00:00+08:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2018/04/28/optimizer.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Yuan's Blog</h1>
+        <h2>An ACM salty fish and NLP beginner</h2>
+
+        <section id="downloads">
+          
+          <a href="" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h2 id="随机梯度下降stochastic-gradient-descent">随机梯度下降:<strong>Stochastic gradient descent</strong></h2>
+<p>shortened to <strong>SGD</strong><br />
+also known as <strong>incremental gradient descent</strong>,<br />
+a stochastc approximation of the <strong>gradient descent</strong>
+for <strong>minimizing an objective function</strong><br />
+<script type="math/tex">Q_i</script> is the value of the loss function at <script type="math/tex">i</script>-th example<br />
+<script type="math/tex">Q(w)</script> is the empirical risk<br />
+<script type="math/tex">w:=w-\eta \nabla Q(w) = w-\eta \sum_{i=1}^{n} {\nabla Q_i(w)/n}</script></p>
+
+<h3 id="algorithm">Algorithm</h3>
+
+<ul>
+  <li>Choose an initial vector of parameters w and learing rate <script type="math/tex">\eta</script></li>
+  <li>Repeat:
+    <ul>
+      <li>Randomly shuffle examples in the training set.</li>
+      <li>For i =1,2,…,n,do:
+        <ul>
+          <li>
+            <script type="math/tex; mode=display">w:=w-\eta \nabla Q_i(w)</script>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>until minimum is obtained</li>
+</ul>
+
+<h3 id="note">note</h3>
+<p>A compromise between computing the true gradient and the gradient at a single example is to compute the gradient more than one training example<strong>mini-batch</strong>a at each-step</p>
+
+<h2 id="动量方法momentum-method">动量方法:momentum method</h2>
+<h3 id="reference">reference</h3>
+<blockquote>
+
+  <p>Rumelhart, David E.; Hinton, Geoffrey E.; Williams, Ronald J. (8 October 1986). “Learning representations by back-propagating errors”. Nature. 323 (6088): 533–536. doi:10.1038/323533a0.</p>
+</blockquote>
+
+<p>Determines the next update as <strong>a linear combination of the gradient and the previous update</strong><br />
+<script type="math/tex">\Delta w :=\alpha\Delta w - \nabla Q_i(w)</script> 
+<script type="math/tex">w:=w-\eta \nabla Q(w)</script><br />
+<strong><script type="math/tex">\eta</script></strong> is a step size (sometimes called the learning rate in machine learning</p>
+
+<h2 id="adagrad">AdaGrad</h2>
+
+<p>Increases the learning rate for more sparse parameters and decreases.<br />
+perform well where data is sparse and sparse parameters are more informative</p>
+<h3 id="algorithm-1">Algorithm</h3>
+<p>A base learning rate <script type="math/tex">\eta</script>, multiplied with the elements of a vector <script type="math/tex">{G_{j,j}}</script> which is the diagonal of the outer product matrix.</p>
+
+<p><script type="math/tex">G = \sum_{\tau=1}^{t}g_\tau g_\tau ^T</script><br />
+where <script type="math/tex">g_\tau = \nabla Q_i(w)</script>, iteration <script type="math/tex">\tau</script><br />
+<script type="math/tex">G_{j,j} = \sum_{\tau=1}^{t}{g_{\tau,j}^2}</script>  <br />
+This vector is updated after every iteration
+<script type="math/tex">w:=w-\eta diag(G)^{-\frac{1}{2}} \circ g</script><br />
+written as per-parameter updates,<br />
+<script type="math/tex">w_j:=w_j-\frac{\eta}{\sqrt{G_{j,j}}}g_j</script><br />
+Each <script type="math/tex">G_{i,i}</script> gives rise to a scaling factor for the learning rate that applies to a single parameter <script type="math/tex">w_i</script>.<br />
+<script type="math/tex">\sqrt{G_i}=\sqrt{\sum_{\tau=1}^{t}g_{\tau}^{2}}</script> is the <script type="math/tex">l_2</script> norm of previous derivatives, extreme parameters updates get dampened.  <br />
+parameters that get few or small updates receive higher learning rates.</p>
+<h2 id="rmsprop--for-root-mean-square-propagation--">RMSProp  (for Root Mean Square Propagation  )</h2>
+
+<p>Divide the learning rate for a weight by a <strong>running average</strong> of the magnitudes of <strong>recent gradients for that weight</strong>.<br />
+<script type="math/tex">v(w,t):=\gamma v(w,t-1)+(1-\gamma)(\nabla Q_i(w))^2</script><br />
+<script type="math/tex">\gamma</script> is the forgetting factor.<br />
+parameters are updated as,<br />
+<script type="math/tex">w:=w-\frac{\eta}{\sqrt{v(w,t)}}\nabla Q_i(w)</script><br />
+Capable to work with mini-batches as well opposed to only full-batches.</p>
+<h2 id="adam--short-for-adaptive-moment-estimation">Adam  (short for adaptive Moment estimation)</h2>
+<p>update to RMSProp optimizer. <br />
+In this optimization, running <strong>averages of</strong> both the <strong>gradients</strong> and <strong>second moments of gradients</strong> are used. <br />
+<script type="math/tex">m_w^{t+1}:=\beta_1m_w^{(t)}+(1-\beta _1)\nabla _wL^{(t)}</script>
+<script type="math/tex">v_w^{t+1}:=\beta_2v_w^{(t)}+(1-\beta _2)(\nabla _wL^{(t)})^2</script><br />
+<script type="math/tex">\hat{m}_w=\frac{m_w^{t+1}}{1-\beta_1^t}</script>
+<script type="math/tex">\hat{v}_w=\frac{v_w^{(t+1)}}{1-\beta_2^t}</script><br />
+<script type="math/tex">w^{(t+1)}:=w^{(t)}-\eta \frac{\hat{m}_w}{\sqrt{\hat{v}_w}+\epsilon}</script><br />
+<script type="math/tex">\beta_1^t</script> and <script type="math/tex">\beta_2^t</script>  denote the power t of  <script type="math/tex">\beta_1</script>,<script type="math/tex">\beta_2</script>.<br />
+<script type="math/tex">\beta_1</script>,<script type="math/tex">\beta_2</script> are the forgetting factors.<br />
+<script type="math/tex">\epsilon</script> is a small number used to prevent division by 0.<br />
+Good default settings for machine learing problems ar<br />
+<script type="math/tex">\eta = 0.001,\beta_1=0.9,\beta_2=0.999</script> and <script type="math/tex">\epsilon=10^{-8}</script></p>
+
+
+      </section>
+    </div>
+
+	<script type="text/javascript"
+  		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+    
+  </body>
+</html>
