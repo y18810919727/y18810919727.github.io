@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>假设检验 hypothesis test | Yuan’s Blog</title>
+<meta property="og:title" content="假设检验 hypothesis test" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="数理统计公式整理 假设检验 母体方差已知检验母体平均数 检验正态母体平均数，假定母体分布为，且已知。母体上做 $$假设H_0:\mu=\mu_0 (\mu_0已知)$$ 给定(是小概率)得，抽样后平均值，若 $$|\bar{x}-\mu_0|\ge\mu_{\frac{a}{2}}\frac{\delta_0}{\sqrt{n}}$$ 则拒绝假设，不能认为母体平均值为 检验正太母体平均数(方差未知)——t检验 假定母体分布为，且未知。母体上做 $$假设H_0:\mu=\mu_0(\mu_0已知)$$ 用做检验,建立统计量 $$T=\frac{\bar{X}-\mu_0}{\frac{S^*}{\sqrt{n}}}$$ $$ |\bar{x}-\mu_0|\ge t_\frac{a}{2}(n-1)\frac{s^*}{\sqrt{n}}$$ 拒绝" />
+<meta property="og:description" content="数理统计公式整理 假设检验 母体方差已知检验母体平均数 检验正态母体平均数，假定母体分布为，且已知。母体上做 $$假设H_0:\mu=\mu_0 (\mu_0已知)$$ 给定(是小概率)得，抽样后平均值，若 $$|\bar{x}-\mu_0|\ge\mu_{\frac{a}{2}}\frac{\delta_0}{\sqrt{n}}$$ 则拒绝假设，不能认为母体平均值为 检验正太母体平均数(方差未知)——t检验 假定母体分布为，且未知。母体上做 $$假设H_0:\mu=\mu_0(\mu_0已知)$$ 用做检验,建立统计量 $$T=\frac{\bar{X}-\mu_0}{\frac{S^*}{\sqrt{n}}}$$ $$ |\bar{x}-\mu_0|\ge t_\frac{a}{2}(n-1)\frac{s^*}{\sqrt{n}}$$ 拒绝" />
+<link rel="canonical" href="http://localhost:4000/2018/05/02/hypothesis_test.html" />
+<meta property="og:url" content="http://localhost:4000/2018/05/02/hypothesis_test.html" />
+<meta property="og:site_name" content="Yuan’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-05-02T00:00:00+08:00" />
+<script type="application/ld+json">
+{"name":null,"description":"数理统计公式整理 假设检验 母体方差已知检验母体平均数 检验正态母体平均数，假定母体分布为，且已知。母体上做 $$假设H_0:\\mu=\\mu_0 (\\mu_0已知)$$ 给定(是小概率)得，抽样后平均值，若 $$|\\bar{x}-\\mu_0|\\ge\\mu_{\\frac{a}{2}}\\frac{\\delta_0}{\\sqrt{n}}$$ 则拒绝假设，不能认为母体平均值为 检验正太母体平均数(方差未知)——t检验 假定母体分布为，且未知。母体上做 $$假设H_0:\\mu=\\mu_0(\\mu_0已知)$$ 用做检验,建立统计量 $$T=\\frac{\\bar{X}-\\mu_0}{\\frac{S^*}{\\sqrt{n}}}$$ $$ |\\bar{x}-\\mu_0|\\ge t_\\frac{a}{2}(n-1)\\frac{s^*}{\\sqrt{n}}$$ 拒绝","author":null,"@type":"BlogPosting","url":"http://localhost:4000/2018/05/02/hypothesis_test.html","publisher":null,"image":null,"headline":"假设检验 hypothesis test","dateModified":"2018-05-02T00:00:00+08:00","datePublished":"2018-05-02T00:00:00+08:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2018/05/02/hypothesis_test.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Yuan's Blog</h1>
+        <h2>An ACM salty fish and NLP beginner</h2>
+
+        <section id="downloads">
+          
+          <a href="" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1 id="数理统计公式整理">数理统计公式整理</h1>
+<h2 id="假设检验">假设检验</h2>
+<h3 id="母体方差已知检验母体平均数">母体方差已知检验母体平均数</h3>
+<p>检验正态母体平均数，假定母体<script type="math/tex">X</script>分布为<script type="math/tex">N(\mu,\delta^2)</script>，且<script type="math/tex">\delta^2=\delta_0^2</script>已知。母体上做</p>
+<center>$$假设H_0:\mu=\mu_0 (\mu_0已知)$$</center>
+<p>给定<script type="math/tex">\alpha</script>(<script type="math/tex">\alpha</script>是小概率)得<script type="math/tex">\mu_{\frac{a}{2}}</script>，抽样后平均值<script type="math/tex">\bar{x}</script>，若</p>
+<center> $$|\bar{x}-\mu_0|\ge\mu_{\frac{a}{2}}\frac{\delta_0}{\sqrt{n}}$$ </center>
+<p>则拒绝假设<script type="math/tex">H_0</script>，不能认为母体平均值为<script type="math/tex">\mu_0</script></p>
+<hr />
+<h3 id="检验正太母体平均数方差未知t检验">检验正太母体平均数(方差未知)——t检验</h3>
+<p>假定母体<script type="math/tex">X</script>分布为<script type="math/tex">N(\mu,\delta^2)</script>，且<script type="math/tex">\delta^2=\delta_0^2</script>未知。母体上做</p>
+<center> $$假设H_0:\mu=\mu_0(\mu_0已知)$$ </center>
+<p>用<script type="math/tex">\bar{X}</script>做检验,建立统计量</p>
+<center>$$T=\frac{\bar{X}-\mu_0}{\frac{S^*}{\sqrt{n}}}$$</center>
+<p><script type="math/tex">服从自由度为n-1的t分布</script></p>
+<center>$$ |\bar{x}-\mu_0|\ge t_\frac{a}{2}(n-1)\frac{s^*}{\sqrt{n}}$$ </center>
+<p>拒绝<script type="math/tex">H_0</script></p>
+
+<hr />
+<h3 id="对delta2检验">对<script type="math/tex">\delta^2检验</script></h3>
+<p>构造检验统计量:</p>
+<center>$$\chi ^2=\frac{(n-1)s^{*2}}{\delta_0^2}$$</center>
+<p><script type="math/tex">服从\chi ^2(n-1)</script><br />
+拒绝域:</p>
+<center>$$(n-1)\frac{s^{*2}}{\delta_0^2}\leq \chi _{1-\frac{a}{2}}^2(n-1) 或 (n-1)\frac{s^{*2}}{\delta_0^2}\ge \chi _{\frac{a}{2}}^2(n-1)$$</center>
+
+<hr />
+<h3 id="正太总体均值差检验">正太总体均值差检验</h3>
+<p><script type="math/tex">\bar{x},\bar{y},s_1^2,s_2^2</script>分别为总体的均值和方差</p>
+<h4 id="sigma-_12sigma-_22sigma2未知t检验"><script type="math/tex">\sigma _1^2=\sigma _2^2=\sigma^2未知(t检验)</script></h4>
+<p><script type="math/tex">H_0:\mu _1-\mu _2=\delta, H_1: \mu _1-\mu _2\ne \delta</script>
+<script type="math/tex">\delta为常数，显著水平为\alpha</script></p>
+<center>$$\frac{(\bar{X}-\bar{Y})-\delta}{s_w*\sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\sim t(n_1+n_2-2)$$</center>
+<center>$$ s_w=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{(n_1+n_2-2))}$$</center>
+<p><script type="math/tex">P(拒绝H_0|H_0为真)=P_{\mu _1-\mu _2=\delta}(|\frac{\bar{x}-\bar{y}-\delta }{s_w \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}|\ge t_{\frac {a}{2}} (n_1+n_2-2))=\alpha</script><br />
+拒绝域为<center>$$\vert \frac{\bar{x}-\bar{y}-\delta }{s_w \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\vert \ge t_{\frac {a}{2}} (n_1+n_2-2))$$</center>
+<script type="math/tex">H_1为u_1-u_2> \delta时</script>
+拒绝域为<center>$$\frac{\bar{x}-\bar{y}-\delta }{s_w \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}&gt; t_{a} (n_1+n_2-2))$$</center>
+<script type="math/tex">% <![CDATA[
+H_1为u_1-u_2< \delta时 %]]></script>
+拒绝域为<center>$$\frac{\bar{x}-\bar{y}-\delta }{s_w \sqrt{\frac{1}{n_1}+\frac{1}{n_2}}}\leq -t_{a} (n_1+n_2-2))$$</center></p>
+
+<h4 id="当sigma-_12-sigma-_22已知时u检验">当<script type="math/tex">\sigma _1^2 ,\sigma _2^2已知时(U检验)</script></h4>
+<p>统计量<center>$$\frac{(\bar{X}-\bar{Y})-\delta}{\sqrt{\frac{\sigma _1^2}{n_1}+\frac{\sigma _2^2}{n_2}}}\sim N(0,1)$$</center><br />
+拒绝域<center>$$P(拒绝H_0|H_0为真)=P_{\mu _1-\mu _2=\delta}(\vert \frac{(\bar{X}-\bar{Y})-\delta}{\sqrt{\frac{\sigma _1^2}{n_1}+\frac{\sigma _2^2}{n_2}}} \vert \ge k)=\alpha $$</center></p>
+
+<center> $$\frac{(\bar{X}-\bar{Y})-\delta}{\sqrt{\frac{\sigma _1^2}{n_1}+\frac{\sigma _2^2}{n_2}}}  \ge z_{\frac{a}{2}} 或  \frac{(\bar{X}-\bar{Y})-\delta}{\sqrt{\frac{\sigma _1^2}{n_1}+\frac{\sigma _2^2}{n_2}}}  \le -z_{\frac{a}{2}}$$ </center>
+<hr />
+<h3 id="成对数据检验">成对数据检验</h3>
+<p><script type="math/tex">n对相互独立的观察结果:</script><br />
+<script type="math/tex">(X_1,Y_1),(X_2,Y_2),...,(X_n,Y_n)</script><br />
+令<script type="math/tex">D_1=X_1-Y_1,D_2=X_2-Y_2,...,D_n=X_n-Y_n</script>
+<script type="math/tex">D_i\sim N(\mu_D,\sigma _D^2)</script> 样本均值<script type="math/tex">\bar{d},s_D^2</script><br />
+三种假设检验</p>
+<ol>
+  <li><script type="math/tex">H_0 : \mu _D=0,H_1 :\mu_D \ne 0</script>  <center>$$t=|\frac{\bar{d}}{\frac{S_D}{\sqrt{n}}}|\ge t_{\frac{a}{2}}(n-1)$$</center></li>
+  <li><script type="math/tex">H_0 : \mu _D=0,H_1 :\mu_D > 0</script>  <center>$$t=\frac{\bar{d}}{\frac{S_D}{\sqrt{n}}}\ge t_a(n-1)$$</center></li>
+  <li><script type="math/tex">% <![CDATA[
+H_0 : \mu _D=0,H_1 :\mu_D < 0 %]]></script>  <center>$$t=\frac{\bar{d}}{\frac{S_D}{\sqrt{n}}}\le -t_a(n-1)$$</center></li>
+</ol>
+<center></center>
+<hr />
+<h3 id="两个正太总体方差检验f检验">两个正太总体方差检验(F检验)</h3>
+<p><script type="math/tex">\mu_1 ,\mu_2 ,\sigma _1^2,\sigma _2^2 未知</script><br />
+假设<script type="math/tex">H_0:\sigma _1^2=\sigma _2^2 ,H_1:\sigma _1^2 \ne \sigma _2^2</script><br />
+构造统计量 <script type="math/tex">F=\frac{s_1^2/\sigma _1^2}{s_2^2/\sigma_ 2^2} \sim F(n_1-1,n_2-1)</script><br />
+显著性水平为<script type="math/tex">\alpha</script>下，拒绝域为:<br />
+<script type="math/tex">\frac{s_1^2}{s_2^2}\le F_{1-\frac{a}{2}}(n_1-1,n_2-1)</script> 或
+<script type="math/tex">\frac{s_1^2}{s_2^2}\ge F_{\frac{a}{2}}(n_1-1,n_2-1)</script>
+<img src="/images/2018-05-02-hypothesis_test/screen1.png" alt="img1" /></p>
+
+
+      </section>
+    </div>
+
+	<script type="text/javascript"
+  		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+    
+  </body>
+</html>
