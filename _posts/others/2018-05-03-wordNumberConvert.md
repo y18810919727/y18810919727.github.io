@@ -12,4 +12,4 @@ Sub ListConverter()
 		ActiveDocument.Content.ListFormat.ConvertNumbersToText
 End Sub
 ```
-4. 运行，OK
+4. F5运行，OK
