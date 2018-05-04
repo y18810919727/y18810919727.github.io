@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>拟合优度 Goodness of Fit | Yuan’s Blog</title>
+<meta property="og:title" content="拟合优度 Goodness of Fit" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="拟合优度 Introduction 在时，分布类型已知，但参数未知，需要先用极大似然估计法估计参数，然后检验 步骤 取值范围分成个小区间，记做 把样本落入第个区间的样本个数几位，称作实测频数，实测频数之和应为 计算总体落入每个的概率,为落入A_i的理论频数 为理论分布与经验分布之间的差异 $$当n\to \infty 时,\chi ^2=\sum_{i=1}^{k}\frac{(f_i-np_i)^2}{np_i} \sim \chi ^2(k-1)$$ 如果理论分布个未知参数需要估计，则自由度为 $$得拒绝域为\chi ^2 &gt;\chi _{\alpha}^2(k-1)(不需要估计参数)$$ $$拒绝域:\chi ^2 &gt;\chi _{\alpha}^2(k-r-1)(需要估计r个参数)$$ tips 该定理在足够大时推导出的，要求，n足够大，一般不小于50，不小于5，否则可适当合并区间 正太总体 先极大似然法估计均值和标准差 对于连续概率分布，使至少为5的法则划分区间" />
+<meta property="og:description" content="拟合优度 Introduction 在时，分布类型已知，但参数未知，需要先用极大似然估计法估计参数，然后检验 步骤 取值范围分成个小区间，记做 把样本落入第个区间的样本个数几位，称作实测频数，实测频数之和应为 计算总体落入每个的概率,为落入A_i的理论频数 为理论分布与经验分布之间的差异 $$当n\to \infty 时,\chi ^2=\sum_{i=1}^{k}\frac{(f_i-np_i)^2}{np_i} \sim \chi ^2(k-1)$$ 如果理论分布个未知参数需要估计，则自由度为 $$得拒绝域为\chi ^2 &gt;\chi _{\alpha}^2(k-1)(不需要估计参数)$$ $$拒绝域:\chi ^2 &gt;\chi _{\alpha}^2(k-r-1)(需要估计r个参数)$$ tips 该定理在足够大时推导出的，要求，n足够大，一般不小于50，不小于5，否则可适当合并区间 正太总体 先极大似然法估计均值和标准差 对于连续概率分布，使至少为5的法则划分区间" />
+<link rel="canonical" href="http://localhost:4000/2018/05/02/GoodnessOfFit.html" />
+<meta property="og:url" content="http://localhost:4000/2018/05/02/GoodnessOfFit.html" />
+<meta property="og:site_name" content="Yuan’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-05-02T00:00:00+08:00" />
+<script type="application/ld+json">
+{"name":null,"description":"拟合优度 Introduction 在时，分布类型已知，但参数未知，需要先用极大似然估计法估计参数，然后检验 步骤 取值范围分成个小区间，记做 把样本落入第个区间的样本个数几位，称作实测频数，实测频数之和应为 计算总体落入每个的概率,为落入A_i的理论频数 为理论分布与经验分布之间的差异 $$当n\\to \\infty 时,\\chi ^2=\\sum_{i=1}^{k}\\frac{(f_i-np_i)^2}{np_i} \\sim \\chi ^2(k-1)$$ 如果理论分布个未知参数需要估计，则自由度为 $$得拒绝域为\\chi ^2 &gt;\\chi _{\\alpha}^2(k-1)(不需要估计参数)$$ $$拒绝域:\\chi ^2 &gt;\\chi _{\\alpha}^2(k-r-1)(需要估计r个参数)$$ tips 该定理在足够大时推导出的，要求，n足够大，一般不小于50，不小于5，否则可适当合并区间 正太总体 先极大似然法估计均值和标准差 对于连续概率分布，使至少为5的法则划分区间","author":null,"@type":"BlogPosting","url":"http://localhost:4000/2018/05/02/GoodnessOfFit.html","publisher":null,"image":null,"headline":"拟合优度 Goodness of Fit","dateModified":"2018-05-02T00:00:00+08:00","datePublished":"2018-05-02T00:00:00+08:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2018/05/02/GoodnessOfFit.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Yuan's Blog</h1>
+        <h2>An ACM salty fish and NLP beginner</h2>
+
+        <section id="downloads">
+          
+          <a href="" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1 id="拟合优度">拟合优度</h1>
+<h2 id="introduction">Introduction</h2>
+<p><script type="math/tex">使用\chi ^2对总体分布进行检验，根据样本的经验分布和所假设的理论分布之间的吻合程度来决定是否接受原假设，是一种非参数检验</script><br />
+在<script type="math/tex">用 \chi ^2检验法检验假设H_0</script>时，分布类型已知，但参数未知，需要先用极大似然估计法估计参数，然后检验</p>
+<h2 id="步骤">步骤</h2>
+<ol>
+  <li>取值范围分成<script type="math/tex">k</script>个小区间，记做<script type="math/tex">A_1,A_2,...A_k</script></li>
+  <li>把样本落入第<script type="math/tex">i</script>个区间的样本个数几位<script type="math/tex">f_i</script>，称作<strong>实测频数</strong>，实测频数之和应为<script type="math/tex">n</script></li>
+  <li>计算总体落入每个<script type="math/tex">A_i</script>的概率<script type="math/tex">p_i</script>,<script type="math/tex">np_i</script>为落入A_i的<strong>理论频数</strong><br />
+<script type="math/tex">f_i-np_i</script>为理论分布与经验分布之间的差异</li>
+</ol>
+<center>$$当n\to \infty 时,\chi ^2=\sum_{i=1}^{k}\frac{(f_i-np_i)^2}{np_i} \sim \chi ^2(k-1)$$</center>
+<p>如果理论分布<script type="math/tex">F(x)有r</script>个未知参数需要估计，则自由度为<script type="math/tex">(k-r-1)</script></p>
+<center>$$得拒绝域为\chi ^2 &gt;\chi _{\alpha}^2(k-1)(不需要估计参数)$$</center>
+<center>$$拒绝域:\chi ^2 &gt;\chi _{\alpha}^2(k-r-1)(需要估计r个参数)$$</center>
+<h3 id="tips">tips</h3>
+<p>该定理在<script type="math/tex">n</script>足够大时推导出的，要求，n足够大，一般不小于50，<script type="math/tex">np_i</script>不小于5，否则可适当合并区间</p>
+<h2 id="正太总体">正太总体</h2>
+<ol>
+  <li>先极大似然法估计均值和标准差</li>
+  <li>对于连续概率分布，使<script type="math/tex">np_i</script>至少为5的法则划分区间 
+<img src="/images/2018-05-02-hypothesis_test/normalGoodness.png" alt="img1" /></li>
+</ol>
+
+<h2 id="ppt下载">ppt下载</h2>
+<p><a href="/download/goodnessOfFit.pdf">ppt download</a></p>
+
+
+      </section>
+    </div>
+
+	<script type="text/javascript"
+  		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+    
+  </body>
+</html>

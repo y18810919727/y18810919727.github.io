@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>线性回归 Linear Regression | Yuan’s Blog</title>
+<meta property="og:title" content="线性回归 Linear Regression" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="一元线性回归 $$Y=\alpha +\beta x+\varepsilon$$ 记 线性回归解决的问题 用试验值对参数 对回归系数作假设检验 在 对估计 (最小二乘法) 离差平方和 $$Q=\sum _{i=1}^n(y_i-\eta _i)^2$$ 选择参数， $$\begin{cases} \dfrac{\partial Q}{\partial \alpha}=-2\sum_{i=1}^{n}(y_i-\alpha -\beta)=0 \\ \dfrac{\partial Q}{\partial \beta}=-2\sum_{i=1}^{n}(y_i-\alpha -\beta) x_i=0&amp; \end{cases}$$ 得到 $$\begin{cases} \hat{\beta} = \dfrac{\bar{x}\bar{y}-\bar{xy}}{\bar{x}^2-\bar{x^2}} \\ \hat{\alpha} = \bar{y}-\hat{\beta} \bar{x}&amp; \end{cases}$$ 可得直线始终过 $$\bar{x^2}-\bar{x}^2=\frac{1}{n}\sum_{i=1}^n x_i^2-\bar{x}^2=\frac{1}{n}\sum_{i=1}^n (x_i-\bar{x})^2$$ $$\bar{xy}-\bar{x}\bar{y}=\frac{1}{n}\sum_{i=1}^nx_iy_i-\bar{x}\bar{y}=\frac{1}{n}\sum_{i=1}^n$$ 可得另一种表示形式 $$\hat{\beta}=\dfrac{\sum\limits_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum\limits_{i=1}^n (x_i-\bar{x})^2}$$ (矩估计法) $$\hat{\sigma}^2=\sum\limits_{i=1}^n(y_i-\hat{\alpha}-\hat{\beta}x_i)^2$$ 另一种形式: 估计量的分布 $$\hat{\beta}\sim N[\beta ,\dfrac{\sigma ^2}{\sum_{i=1}^n (x_i-\bar{x})^2}]$$ $ 123 $" />
+<meta property="og:description" content="一元线性回归 $$Y=\alpha +\beta x+\varepsilon$$ 记 线性回归解决的问题 用试验值对参数 对回归系数作假设检验 在 对估计 (最小二乘法) 离差平方和 $$Q=\sum _{i=1}^n(y_i-\eta _i)^2$$ 选择参数， $$\begin{cases} \dfrac{\partial Q}{\partial \alpha}=-2\sum_{i=1}^{n}(y_i-\alpha -\beta)=0 \\ \dfrac{\partial Q}{\partial \beta}=-2\sum_{i=1}^{n}(y_i-\alpha -\beta) x_i=0&amp; \end{cases}$$ 得到 $$\begin{cases} \hat{\beta} = \dfrac{\bar{x}\bar{y}-\bar{xy}}{\bar{x}^2-\bar{x^2}} \\ \hat{\alpha} = \bar{y}-\hat{\beta} \bar{x}&amp; \end{cases}$$ 可得直线始终过 $$\bar{x^2}-\bar{x}^2=\frac{1}{n}\sum_{i=1}^n x_i^2-\bar{x}^2=\frac{1}{n}\sum_{i=1}^n (x_i-\bar{x})^2$$ $$\bar{xy}-\bar{x}\bar{y}=\frac{1}{n}\sum_{i=1}^nx_iy_i-\bar{x}\bar{y}=\frac{1}{n}\sum_{i=1}^n$$ 可得另一种表示形式 $$\hat{\beta}=\dfrac{\sum\limits_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum\limits_{i=1}^n (x_i-\bar{x})^2}$$ (矩估计法) $$\hat{\sigma}^2=\sum\limits_{i=1}^n(y_i-\hat{\alpha}-\hat{\beta}x_i)^2$$ 另一种形式: 估计量的分布 $$\hat{\beta}\sim N[\beta ,\dfrac{\sigma ^2}{\sum_{i=1}^n (x_i-\bar{x})^2}]$$ $ 123 $" />
+<link rel="canonical" href="http://localhost:4000/2018/05/02/linearRegression.html" />
+<meta property="og:url" content="http://localhost:4000/2018/05/02/linearRegression.html" />
+<meta property="og:site_name" content="Yuan’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-05-02T00:00:00+08:00" />
+<script type="application/ld+json">
+{"name":null,"description":"一元线性回归 $$Y=\\alpha +\\beta x+\\varepsilon$$ 记 线性回归解决的问题 用试验值对参数 对回归系数作假设检验 在 对估计 (最小二乘法) 离差平方和 $$Q=\\sum _{i=1}^n(y_i-\\eta _i)^2$$ 选择参数， $$\\begin{cases} \\dfrac{\\partial Q}{\\partial \\alpha}=-2\\sum_{i=1}^{n}(y_i-\\alpha -\\beta)=0 \\\\ \\dfrac{\\partial Q}{\\partial \\beta}=-2\\sum_{i=1}^{n}(y_i-\\alpha -\\beta) x_i=0&amp; \\end{cases}$$ 得到 $$\\begin{cases} \\hat{\\beta} = \\dfrac{\\bar{x}\\bar{y}-\\bar{xy}}{\\bar{x}^2-\\bar{x^2}} \\\\ \\hat{\\alpha} = \\bar{y}-\\hat{\\beta} \\bar{x}&amp; \\end{cases}$$ 可得直线始终过 $$\\bar{x^2}-\\bar{x}^2=\\frac{1}{n}\\sum_{i=1}^n x_i^2-\\bar{x}^2=\\frac{1}{n}\\sum_{i=1}^n (x_i-\\bar{x})^2$$ $$\\bar{xy}-\\bar{x}\\bar{y}=\\frac{1}{n}\\sum_{i=1}^nx_iy_i-\\bar{x}\\bar{y}=\\frac{1}{n}\\sum_{i=1}^n$$ 可得另一种表示形式 $$\\hat{\\beta}=\\dfrac{\\sum\\limits_{i=1}^n(x_i-\\bar{x})(y_i-\\bar{y})}{\\sum\\limits_{i=1}^n (x_i-\\bar{x})^2}$$ (矩估计法) $$\\hat{\\sigma}^2=\\sum\\limits_{i=1}^n(y_i-\\hat{\\alpha}-\\hat{\\beta}x_i)^2$$ 另一种形式: 估计量的分布 $$\\hat{\\beta}\\sim N[\\beta ,\\dfrac{\\sigma ^2}{\\sum_{i=1}^n (x_i-\\bar{x})^2}]$$ $ 123 $","author":null,"@type":"BlogPosting","url":"http://localhost:4000/2018/05/02/linearRegression.html","publisher":null,"image":null,"headline":"线性回归 Linear Regression","dateModified":"2018-05-02T00:00:00+08:00","datePublished":"2018-05-02T00:00:00+08:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2018/05/02/linearRegression.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Yuan's Blog</h1>
+        <h2>An ACM salty fish and NLP beginner</h2>
+
+        <section id="downloads">
+          
+          <a href="" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1 id="一元线性回归">一元线性回归</h1>
+<p><script type="math/tex">x是可控变量，y是依赖于x的随机变量，它们的关系是</script></p>
+<center>$$Y=\alpha +\beta x+\varepsilon$$</center>
+<p><script type="math/tex">其中\alpha ,\beta是常数，\varepsilon \sim N(0,\sigma ^2)，X和Y之间为一元线性回归，Y \sim N(\alpha +\beta x, \sigma ^2),\beta 为回归系数</script>
+记<script type="math/tex">\eta = EY=\alpha +\beta x</script></p>
+<h3 id="线性回归解决的问题">线性回归解决的问题</h3>
+<ol>
+  <li>用试验值对参数<script type="math/tex">\alpha , \beta ,\sigma ^2 作点估计</script></li>
+  <li>对回归系数<script type="math/tex">\beta</script>作假设检验</li>
+  <li>在<script type="math/tex">x=x_0处，对Y作区间估计</script>
+    <h3 id="对alpha--beta--sigma-2估计-最小二乘法">对<script type="math/tex">\alpha , \beta , \sigma ^2</script>估计 (最小二乘法)</h3>
+    <p>离差平方和</p>
+  </li>
+</ol>
+<center>$$Q=\sum _{i=1}^n(y_i-\eta _i)^2$$</center>
+<p>选择参数<script type="math/tex">\alpha , \beta 使Q最小，令Q对两个参数一阶偏导为0</script>，</p>
+<center>$$\begin{cases}  
+		\dfrac{\partial Q}{\partial \alpha}=-2\sum_{i=1}^{n}(y_i-\alpha -\beta)=0 \\
+		\dfrac{\partial Q}{\partial \beta}=-2\sum_{i=1}^{n}(y_i-\alpha -\beta) x_i=0&amp;			
+	\end{cases}$$</center>
+<p>得到<script type="math/tex">\hat{\alpha} ,\hat{\beta}</script></p>
+<center>$$\begin{cases}  
+		\hat{\beta} = \dfrac{\bar{x}\bar{y}-\bar{xy}}{\bar{x}^2-\bar{x^2}} \\
+		\hat{\alpha} = \bar{y}-\hat{\beta} \bar{x}&amp;
+	\end{cases}$$</center>
+<p><strong>可得<script type="math/tex">y=\hat{\alpha} +\hat{\beta} x</script>直线始终过<script type="math/tex">(\bar{x},\bar{y})</script></strong></p>
+<center>$$\bar{x^2}-\bar{x}^2=\frac{1}{n}\sum_{i=1}^n x_i^2-\bar{x}^2=\frac{1}{n}\sum_{i=1}^n (x_i-\bar{x})^2$$</center>
+<center>$$\bar{xy}-\bar{x}\bar{y}=\frac{1}{n}\sum_{i=1}^nx_iy_i-\bar{x}\bar{y}=\frac{1}{n}\sum_{i=1}^n$$</center>
+<p>可得<script type="math/tex">\hat{\beta}</script>另一种表示形式</p>
+<center>$$\hat{\beta}=\dfrac{\sum\limits_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum\limits_{i=1}^n (x_i-\bar{x})^2}$$</center>
+<h3 id="sigma-2-估计矩估计法"><script type="math/tex">\sigma ^2 估计</script>(矩估计法)</h3>
+<center>$$\hat{\sigma}^2=\sum\limits_{i=1}^n(y_i-\hat{\alpha}-\hat{\beta}x_i)^2$$</center>
+<h4 id="另一种形式">另一种形式:</h4>
+<p><script type="math/tex">Q_{min}=\sum\limits_{i=1}^n(Y_i-\hat{\eta_i})=\sum\limits_{i=1}^n(Y_i-\hat{Y})^2-\hat{\beta}^2\sum\limits_{i=1}^n(x_i-\bar{x})^2</script><br />
+<script type="math/tex">\hat{\sigma}^2=\dfrac{1}{n}Q_{min}=\sum\limits_{i=1}^n(Y_i-\hat{\eta_i})</script>
+<script type="math/tex">=\sum\limits_{i=1}^n(Y_i-\hat{Y})^2-\hat{\beta}^2\sum\limits_{i=1}^n(x_i-\bar{x})^2</script></p>
+<h3 id="估计量的分布">估计量的分布</h3>
+<p><script type="math/tex">\hat{\beta}=\dfrac{\sum\limits_{i=1}^n(x_i-\bar{x})y_i}{\sum\limits_{i=1}^n (x_i-\bar{x})^2}</script><br />
+<script type="math/tex">Y_1,Y_2,...,Y_n为独立的正态，\hat{\beta}服从正态</script><br />
+<script type="math/tex">E\hat{\beta}=\dfrac{\sum\limits_{i=1}^n(x_i-\bar{x})EY_i}{\sum\limits_{i=1}^n (x_i-\bar{x})^2}</script>
+<script type="math/tex">=\dfrac{\sum\limits_{i=1}^n(x_i-\bar{x})(\alpha +\beta x_i)}{\sum\limits_{i=1}^n (x_i-\bar{x})^2}</script><br />
+<script type="math/tex">=\dfrac{\sum\limits_{i=1}^n(x_i-\bar{x})\beta x_i}{\sum\limits_{i=1}^n (x_i-\bar{x})^2}</script>
+<script type="math/tex">=\beta</script><br />
+<script type="math/tex">D\hat{\beta}=\dfrac{\sum\limits_{i=1}^n(x_i-\bar{x})^2DY_i}{[\sum\limits_{i=1}^n (x_i-\bar{x})^2]^2}</script>
+<script type="math/tex">=\dfrac{\sigma ^2}{\sum\limits_{i=1}^n (x_i-\bar{x})^2}</script></p>
+<center>$$\hat{\beta}\sim N[\beta ,\dfrac{\sigma ^2}{\sum_{i=1}^n (x_i-\bar{x})^2}]$$</center>
+<p>$ 123 $</p>
+
+      </section>
+    </div>
+
+	<script type="text/javascript"
+  		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+    
+  </body>
+</html>
