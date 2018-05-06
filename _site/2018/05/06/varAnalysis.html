@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/style.css?v=">
+
+<!-- Begin Jekyll SEO tag v2.3.0 -->
+<title>方差分析 Analysis of Variance | Yuan’s Blog</title>
+<meta property="og:title" content="方差分析 Analysis of Variance" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="方差分析 一元方差分析" />
+<meta property="og:description" content="方差分析 一元方差分析" />
+<link rel="canonical" href="http://localhost:4000/2018/05/06/varAnalysis.html" />
+<meta property="og:url" content="http://localhost:4000/2018/05/06/varAnalysis.html" />
+<meta property="og:site_name" content="Yuan’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-05-06T00:00:00+08:00" />
+<script type="application/ld+json">
+{"name":null,"description":"方差分析 一元方差分析","author":null,"@type":"BlogPosting","url":"http://localhost:4000/2018/05/06/varAnalysis.html","publisher":null,"image":null,"headline":"方差分析 Analysis of Variance","dateModified":"2018-05-06T00:00:00+08:00","datePublished":"2018-05-06T00:00:00+08:00","sameAs":null,"mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2018/05/06/varAnalysis.html"},"@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Yuan's Blog</h1>
+        <h2>An ACM salty fish and NLP beginner</h2>
+
+        <section id="downloads">
+          
+          <a href="" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h1 id="方差分析">方差分析</h1>
+<h2 id="一元方差分析">一元方差分析</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">母体</th>
+      <th style="text-align: left">子样</th>
+      <th style="text-align: left">子样平均</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><script type="math/tex">x_1</script></td>
+      <td style="text-align: left"><script type="math/tex">x_{11}</script>,<script type="math/tex">x_{12}</script>…<script type="math/tex">x_{1n_1}</script></td>
+      <td style="text-align: left"><script type="math/tex">\bar{x_1}</script></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">.</td>
+      <td style="text-align: left">.</td>
+      <td style="text-align: left">.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">.</td>
+      <td style="text-align: left">.</td>
+      <td style="text-align: left">.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">.</td>
+      <td style="text-align: left">.</td>
+      <td style="text-align: left">.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><script type="math/tex">x_r</script></td>
+      <td style="text-align: left"><script type="math/tex">x_{r1}</script>,<script type="math/tex">x_{r2}</script>…<script type="math/tex">x_{rn_r}</script></td>
+      <td style="text-align: left"><script type="math/tex">\bar{x_r}</script></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="假设">假设</h3>
+<ol>
+  <li>各水平<script type="math/tex">A_j(j=1,2,...,s)</script>下的样本<script type="math/tex">X_{1,j},X_{2,j},...,X_{n_j,j}</script>来自相同的方差<script type="math/tex">\sigma ^2 ,均值为\mu _j(j=1,2,...,s)</script>的正态总体<script type="math/tex">N(\mu _j,\sigma ^2),\mu _j 与\sigma ^2未知</script></li>
+  <li>不同<script type="math/tex">A_j</script>下样本独立</li>
+</ol>
+
+<h3 id="基于假设检验方差分析">基于假设检验方差分析</h3>
+<p><script type="math/tex">H_0:\mu _1=\mu _2=...=\mu _s</script><br />
+<script type="math/tex">H_1:\mu _1,\mu _2,...,\mu _s不全相等</script><br />
+<script type="math/tex">n=\sum\limits_{j=1}^{s}n_j,\mu=\frac{1}{n}\sum\limits_{j=1}^{s}n_j\mu _j</script> <br />
+<script type="math/tex">a_j=\mu _j-\mu , j=1,2,...;s ，代表A_j的效应，水平A_j下总体平均值与总体平均的差异</script></p>
+<h4 id="数学模型">数学模型</h4>
+<p><script type="math/tex">x_{ij}=\mu +a_j+\varepsilon _{ij}</script><br />
+<script type="math/tex">\varepsilon _{ij}\sim N(0,\sigma ^2),各\varepsilon 独立</script><br />
+<script type="math/tex">i=1,2,...,n_j,j=1,2,...,s,</script><br />
+<script type="math/tex">\sum\limits_{j=1}^{s}n_ja_j=0</script><br />
+假设检验<br />
+<script type="math/tex">H_0:a _1=a _2=...=a _s</script><br />
+<script type="math/tex">H_1:a _i \ne 0(i=1,2,...,r) 至少一个成立</script></p>
+
+<h4 id="离差分析法">离差分析法</h4>
+<p><script type="math/tex">\bar{x_i}=\dfrac{1}{n}\sum\limits_{j=1}^{n_i}x_{ij},\bar{x}=\dfrac{1}{n}\sum\limits_{i=1}^{r}\sum\limits_{j=1}^{n_i}x_{ij}</script><br />
+<script type="math/tex">总离差平方和Q_T=\sum\limits_{i=1}^{r}\sum\limits_{j=1}^{n_i}(x_{ij}-\bar{x})^2</script><br />
+<script type="math/tex">组内离差平方和Q_E=\sum\limits_{i=1}^{r}\sum\limits_{j=1}^{n_i}(x_{ij}-\bar{x_{i}})^2</script><br />
+<script type="math/tex">组间离差平方和 Q_A=\sum\limits_{i=1}^{r}n_i(\bar{x_i}-\bar{x})</script></p>
+<center>$$Q_T=Q_E+Q_A$$</center>
+<p><script type="math/tex">E\dfrac{Q_E}{n-r}=\sigma ^2</script><br />
+<script type="math/tex">E\dfrac{Q_A}{r-1}=\sigma ^2+\dfrac{1}{r-1}\sum\limits_{i=1}^{r}n_i\delta_i^2</script><br />
+<script type="math/tex">可得E\dfrac{Q_A}{r-1} \ge E\dfrac{Q_E}{n-r}</script></p>
+<h5 id="分解定理">分解定理</h5>
+<p><script type="math/tex">Q为自由度为n的\chi ^2变量</script><br />
+<script type="math/tex">Q=Q_1+Q_2+...+Q_k ,Q_i为X_1,X_2,...X_n的线性组合的平方和(非负定二次型),自由度为f_i</script><br />
+<strong><center>$$Q_i相互独立且为自由度为f_i的\chi ^2的充要条件为\sum\limits_{:i=1}{k}f_i=n$$</center></strong></p>
+
+<h5 id="离差分析表">离差分析表</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">来源</th>
+      <th style="text-align: left"><center>离差平方和</center></th>
+      <th style="text-align: left">自由度</th>
+      <th style="text-align: left">均方离差</th>
+      <th style="text-align: left"><script type="math/tex">F值</script></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">组间</td>
+      <td style="text-align: left"><script type="math/tex">Q_A=\sum\limits_{i=1}^{r}n_i(\bar{X_i}-\bar{X})^2</script></td>
+      <td style="text-align: left">r-1</td>
+      <td style="text-align: left"><script type="math/tex">S_A^2=\dfrac{Q_A}{r-1}</script></td>
+      <td style="text-align: left"><script type="math/tex">F=\dfrac{S_A^2}{S_E^2}</script></td>
+    </tr>
+    <tr>
+      <td style="text-align: left">组内</td>
+      <td style="text-align: left"><script type="math/tex">Q_E=\sum\limits_{i=1}^r\sum\limits_{j=1}^{n_r}(X_{ij}-\bar{X_i})^2</script></td>
+      <td style="text-align: left"><script type="math/tex">n-r</script></td>
+      <td style="text-align: left"><script type="math/tex">S_E^2=\dfrac{Q_E}{n-r}</script></td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: left">总和</td>
+      <td style="text-align: left"><script type="math/tex">Q_E=\sum\limits_{i=1}^r\sum\limits_{j=1}^{n_r}(X_{ij}-\bar{X})^2</script></td>
+      <td style="text-align: left">n-1</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>若<script type="math/tex">F \ge F_a(r-1,n-r)则拒绝假设H_0，认为因素对结果有显著影响</script></p>
+<h5 id="对mu-_i-mu-_k作区间估计"><script type="math/tex">对\mu _i-\mu _k作区间估计</script></h5>
+<p><script type="math/tex">若H_0不成立对\mu _i-\mu _k作区间估计</script><br />
+<script type="math/tex">\bar{X_i}-\bar{X_k} \sim N(\mu _i-\mu _k,(\frac{1}{n_i}+\frac{1}{n_k})\sigma ^2)</script><br />
+<script type="math/tex">T=\dfrac{\bar{X}_i-\bar{X}_k-(\mu _i-\mu _k)}{\sqrt{\dfrac{1}{n_i}+\dfrac{1}{n_k}}S_E} \sim t(n-r)</script><br />
+<script type="math/tex">\mu _i- \mu _k 的置信概率为1-a的置信区间为</script></p>
+<center>$$(\bar{X}_i-\bar{X}_k-t_{\frac{a}{2}}(n-r)\sqrt{\dfrac{1}{n_i}+\dfrac{1}{n_k}}S_E,\bar{X}_i-\bar{X}_k+t_{\frac{a}{2}}(n-r)\sqrt{\dfrac{1}{n_i}+\dfrac{1}{n_k}}S_E)$$</center>
+
+
+      </section>
+    </div>
+
+	<script type="text/javascript"
+  		src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+	</script>
+    
+  </body>
+</html>
